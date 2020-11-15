@@ -2,8 +2,8 @@
 {
     public enum MilitaryAirplaneType
     {
-        FIGHTER,
-        BOMBER,
-        TRANSPORT
+        Fighter,
+        Bomber,
+        Transport
     }
 }

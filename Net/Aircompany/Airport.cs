@@ -33,12 +33,22 @@ namespace Aircompany
 
         public List<MilitaryPlane> GetTransportMilitaryPlanes()
         {
-            return GetMilitaryPlanes().Where(x => x.GetPlaneType() == MilitaryAirplaneType.TRANSPORT).ToList();
+            return GetMilitaryPlanes().Where(x => x.GetPlaneType() == MilitaryAirplaneType.Transport).ToList();
         }
 
-        public Airport SortByMaxDistance()
+        public List<MilitaryPlane> GetFighterMilitaryPlanes()
         {
-            return new Airport(Planes.OrderBy(w => w.MaxFlightDistance()));
+            return GetMilitaryPlanes().Where(x => x.GetPlaneType() == MilitaryAirplaneType.Fighter).ToList();
+        }
+
+        public List<MilitaryPlane> GetBomberMilitaryPlanes()
+        {
+            return GetMilitaryPlanes().Where(x => x.GetPlaneType() == MilitaryAirplaneType.Bomber).ToList();
+        }
+
+        public Airport SortByMaxFlightDistance()
+        {
+            return new Airport(Planes.OrderBy(w => w.GetMaxFlightDistance()));
         }
 
         public Airport SortByMaxSpeed()
@@ -48,7 +58,7 @@ namespace Aircompany
 
         public Airport SortByMaxLoadCapacity()
         {
-            return new Airport(Planes.OrderBy(w => w.MaxLoadCapacity()));
+            return new Airport(Planes.OrderBy(w => w.GetMaxLoadCapacity()));
         }
 
 
