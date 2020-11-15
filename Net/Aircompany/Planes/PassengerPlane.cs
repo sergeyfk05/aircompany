@@ -6,10 +6,15 @@ namespace Aircompany.Planes
     {
         public int _passengersCapacity;
 
-        public PassengerPlane(string model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, int passengersCapacity)
-            :base(model, maxSpeed, maxFlightDistance, maxLoadCapacity)
+        public PassengerPlane(string airplaneModel, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, int passengersCapacity)
+            :base(airplaneModel, maxSpeed, maxFlightDistance, maxLoadCapacity)
         {
             _passengersCapacity = passengersCapacity;
+        }
+
+        public int GetPassengersCapacity()
+        {
+            return _passengersCapacity;
         }
 
         public override bool Equals(object obj)
@@ -28,12 +33,6 @@ namespace Aircompany.Planes
             return hashCode;
         }
 
-        public int PassengersCapacityIs()
-        {
-            return _passengersCapacity;
-        }
-
-       
         public override string ToString()
         {
             return base.ToString().Replace("}",
