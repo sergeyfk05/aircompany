@@ -10,10 +10,10 @@ namespace AircompanyTests.Tests
     [TestFixture]
     public class AirportTest
     {
-        private List<Plane> planes = new List<Plane>(){
+        private readonly List<Plane> planes = new List<Plane>(){
            new PassengerPlane("Boeing-737", 900, 12000, 60500, 164),
            new PassengerPlane("Boeing-737-800", 940, 12300, 63870, 192),
-           new PassengerPlane("Boeing-747", 980, 16100, 70500, 242),
+           new PassengerPlane("Boeing-747", 980, 16100, 70500, 9999),
            new PassengerPlane("Airbus A320", 930, 11800, 65500, 188),
            new PassengerPlane("Airbus A330", 990, 14800, 80500, 222),
            new PassengerPlane("Embraer 190", 870, 8100, 30800, 64),
@@ -25,51 +25,38 @@ namespace AircompanyTests.Tests
            new MilitaryPlane("F-15", 1500, 12000, 10000, MilitaryAirplaneType.FIGHTER),
            new MilitaryPlane("F-22", 1550, 13000, 11000, MilitaryAirplaneType.FIGHTER),
            new MilitaryPlane("C-130 Hercules", 650, 5000, 110000, MilitaryAirplaneType.TRANSPORT)
-   };
+        };
 
-        private PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
+        private const int MaxPassengerCapacityOfPassengerPlanes = 9999;
 
         [Test]
-        public void MyTest1()
+        public void GetPassengerPlanesMethodTest()
         {
             Airport airport = new Airport(planes);
-            List<MilitaryPlane> transportMilitaryPlanes = airport.GetTransportMilitaryPlanes().ToList();
-            bool hasMilitaryTransportPlane = false;
-            foreach (MilitaryPlane militaryPlane in transportMilitaryPlanes)
-            {
-                if ((militaryPlane.GetPlaneType() == MilitaryAirplaneType.TRANSPORT))
-                {
-                    hasMilitaryTransportPlane = true;
-                }
-            }
-            Assert.IsTrue(hasMilitaryTransportPlane);
+            List<PassengerPlane> passengerPlanes = airport.GetPassengerPlanes();
+            Assert.IsNull(passengerPlanes.FirstOrDefault(x => !(x is PassengerPlane)));
+        }
+        [Test]
+        public void GetMilitaryPlanesMethodTest()
+        {
+            Airport airport = new Airport(planes);
+            List<MilitaryPlane> militaryPlanes = airport.GetMilitaryPlanes();
+            Assert.IsNull(militaryPlanes.FirstOrDefault(x => !(x is MilitaryPlane)));
+        }
+        [Test]
+        public void GetTransportMilitaryPlanesMethodTest()
+        {
+            Airport airport = new Airport(planes);
+            List<MilitaryPlane> transportMilitaryPlanes = airport.GetTransportMilitaryPlanes();
+            Assert.IsNull(transportMilitaryPlanes.FirstOrDefault(x => x.GetPlaneType() != MilitaryAirplaneType.TRANSPORT));
         }
 
         [Test]
-        public void MyTest2()
+        public void GetMaxPassengersCapacityPassengerPlaneMetodTest()
         {
             Airport airport = new Airport(planes);
-            PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.GetMaxPassengersCapacityPassengerPlane();           
+            Assert.IsTrue(airport.GetMaxPassengersCapacityPassengerPlane().GetPassengersCapacity() == MaxPassengerCapacityOfPassengerPlanes);
         }
 
-        [Test]
-        public void MyTest3()
-        {
-            Airport airport = new Airport(planes);
-            airport = airport.SortByMaxLoadCapacity();
-            List<Plane> planesSortedByMaxLoadCapacity = airport.GetPlanes().ToList();
-
-            bool nextPlaneMaxLoadCapacityIsHigherThanCurrent = true;
-            for (int i = 0; i < planesSortedByMaxLoadCapacity.Count - 1; i++)
-            {
-                Plane currentPlane = planesSortedByMaxLoadCapacity[i];
-                Plane nextPlane = planesSortedByMaxLoadCapacity[i + 1];
-                if (currentPlane.MaxLoadCapacity() > nextPlane.MaxLoadCapacity())
-                {
-                    nextPlaneMaxLoadCapacityIsHigherThanCurrent = false;
-                }
-            }
-            Assert.That(nextPlaneMaxLoadCapacityIsHigherThanCurrent==true);
-        }
     }
 }

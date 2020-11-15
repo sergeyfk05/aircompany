@@ -15,7 +15,7 @@ namespace Aircompany
             Planes = planes.ToList();
         }
 
-        public List<PassengerPlane> GetPassengersPlanes()
+        public List<PassengerPlane> GetPassengerPlanes()
         {
             return Planes.OfType<PassengerPlane>().ToList();
         }
@@ -27,8 +27,8 @@ namespace Aircompany
 
         public PassengerPlane GetMaxPassengersCapacityPassengerPlane()
         {
-            int maxPassengersCapacity = GetPassengersPlanes().Max(x => x.GetPassengersCapacity());
-            return GetPassengersPlanes().FirstOrDefault(x => x.GetPassengersCapacity() == maxPassengersCapacity);       
+            int maxPassengersCapacity = GetPassengerPlanes().Max(x => x.GetPassengersCapacity());
+            return GetPassengerPlanes().FirstOrDefault(x => x.GetPassengersCapacity() == maxPassengersCapacity);       
         }
 
         public List<MilitaryPlane> GetTransportMilitaryPlanes()
