@@ -19,6 +19,7 @@ namespace AircompanyTests.Tests.Planes
             Assert.AreEqual(123, passengerPlane.GetPassengersCapacity());
         }
 
+        [Test]
         public void TrueEqualTest()
         {
             PassengerPlane firstPlane = new PassengerPlane("model", 999, 9999, 99999, 123);
@@ -27,6 +28,7 @@ namespace AircompanyTests.Tests.Planes
             Assert.AreEqual(firstPlane, secondPlane);
         }
 
+        [Test]
         public void FalseEqualTest()
         {
             PassengerPlane firstPlane = new PassengerPlane("model", 999, 9999, 99999, 123);
@@ -34,6 +36,7 @@ namespace AircompanyTests.Tests.Planes
 
             Assert.AreNotEqual(firstPlane, secondPlane);
         }
+        [Test]
         public void FalseSecondEqualTest()
         {
             PassengerPlane firstPlane = new PassengerPlane("model", 999, 9999, 99999, 123);
@@ -41,6 +44,7 @@ namespace AircompanyTests.Tests.Planes
 
             Assert.AreNotEqual(firstPlane, secondPlane);
         }
+        [Test]
         public void FalseThirdEqualTest()
         {
             PassengerPlane firstPlane = new PassengerPlane("model", 999, 9999, 99999, 123);
@@ -48,6 +52,7 @@ namespace AircompanyTests.Tests.Planes
 
             Assert.AreNotEqual(firstPlane, secondPlane);
         }
+        [Test]
         public void FalseFouthEqualTest()
         {
             PassengerPlane firstPlane = new PassengerPlane("model", 999, 9999, 99999, 123);
@@ -55,6 +60,7 @@ namespace AircompanyTests.Tests.Planes
 
             Assert.AreNotEqual(firstPlane, secondPlane);
         }
+        [Test]
         public void FalseFifthEqualTest()
         {
             PassengerPlane firstPlane = new PassengerPlane("model", 999, 9999, 99999, 123);

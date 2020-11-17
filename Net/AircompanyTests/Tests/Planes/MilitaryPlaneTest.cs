@@ -18,6 +18,8 @@ namespace AircompanyTests.Tests.Planes
             Assert.AreEqual(Aircompany.Models.MilitaryAirplaneType.Bomber, militaryPlane.GetPlaneType());
         }
 
+
+        [Test]
         public void TrueEqualTest()
         {
             MilitaryPlane firstPlane = new MilitaryPlane("model", 999, 9999, 99999, Aircompany.Models.MilitaryAirplaneType.Bomber);
@@ -26,6 +28,7 @@ namespace AircompanyTests.Tests.Planes
             Assert.AreEqual(firstPlane, secondPlane);
         }
 
+        [Test]
         public void FalseEqualTest()
         {
             MilitaryPlane firstPlane = new MilitaryPlane("model", 999, 9999, 99999, Aircompany.Models.MilitaryAirplaneType.Bomber);
@@ -33,6 +36,7 @@ namespace AircompanyTests.Tests.Planes
 
             Assert.AreNotEqual(firstPlane, secondPlane);
         }
+        [Test]
         public void FalseSecondEqualTest()
         {
             MilitaryPlane firstPlane = new MilitaryPlane("model", 999, 9999, 99999, Aircompany.Models.MilitaryAirplaneType.Bomber);
@@ -40,6 +44,7 @@ namespace AircompanyTests.Tests.Planes
 
             Assert.AreNotEqual(firstPlane, secondPlane);
         }
+        [Test]
         public void FalseThirdEqualTest()
         {
             MilitaryPlane firstPlane = new MilitaryPlane("model", 999, 9999, 99999, Aircompany.Models.MilitaryAirplaneType.Bomber);
@@ -47,6 +52,7 @@ namespace AircompanyTests.Tests.Planes
 
             Assert.AreNotEqual(firstPlane, secondPlane);
         }
+        [Test]
         public void FalseFouthEqualTest()
         {
             MilitaryPlane firstPlane = new MilitaryPlane("model", 999, 9999, 99999, Aircompany.Models.MilitaryAirplaneType.Bomber);
@@ -54,6 +60,7 @@ namespace AircompanyTests.Tests.Planes
 
             Assert.AreNotEqual(firstPlane, secondPlane);
         }
+        [Test]
         public void FalseFifthEqualTest()
         {
             MilitaryPlane firstPlane = new MilitaryPlane("model", 999, 9999, 99999, Aircompany.Models.MilitaryAirplaneType.Bomber);
